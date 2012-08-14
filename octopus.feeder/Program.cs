@@ -32,7 +32,8 @@ namespace octopus.feeder
 
             while (true)
             {
-                Console.Write("Enter a letter, number of punctuation ('q' or 'Q' to quit): ");
+                Console.WriteLine("Enter a letter, number of punctuation ('q' or 'Q' to quit)");
+                Console.WriteLine("Enter 'e', '1', '?' to generate exception in the respective worker threads");
                 ConsoleKeyInfo key = Console.ReadKey();
                 Console.WriteLine();
 

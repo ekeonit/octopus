@@ -12,6 +12,13 @@
   <WorkerRole name="octopus.worker" vmsize="Small">
     <Imports>
       <Import moduleName="Diagnostics" />
+      <Import moduleName="Connect" />
+      <Import moduleName="RemoteAccess" />
+      <Import moduleName="RemoteForwarder" />
     </Imports>
+    <ConfigurationSettings>
+      <Setting name="StorageConnectionString" />
+    </ConfigurationSettings>
+    <Certificates></Certificates>
   </WorkerRole>
 </ServiceDefinition>

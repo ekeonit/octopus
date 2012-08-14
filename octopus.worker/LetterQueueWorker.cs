@@ -11,6 +11,8 @@ namespace WorkerRole
 {
     class LetterQueueWorker : ThreadWorker
     {
+        bool RepeatMode { get; set; }
+
         public override void Run()
         {
             // Retrieve storage account from connection-string
@@ -31,15 +33,39 @@ namespace WorkerRole
 
                     if (message != null)
                     {
-                        Trace.WriteLine(String.Format("Found message.  Moving {0} to the output queue", message.AsString), "[Letter Queue]");
+                        RepeatMode = false;
 
-                        // move the message to the output queue
-                        CloudQueue outputQueue = queueClient.GetQueueReference("output");
-                        outputQueue.CreateIfNotExist();
-                        outputQueue.AddMessage(message);
+                        if (message.AsString.Equals("e"))
+                        {
+                            // throw an exception
+                            letterQueue.DeleteMessage(message);
+                            Trace.WriteLine("Exception requested", "[Letter Queue]");
+                            throw new Exception("Received an exception request");
+                        }
+                        else if (message.AsString.Equals("x"))
+                        {
+                            // repeat mode
+                            RepeatMode = true;
+                            letterQueue.DeleteMessage(message);
+                        }
+                        else
+                        {
+                            Trace.WriteLine(String.Format("Found message.  Moving {0} to the output queue", message.AsString), "[Letter Queue]");
 
-                        letterQueue.DeleteMessage(message);
+                            // move the message to the output queue
+                            CloudQueue outputQueue = queueClient.GetQueueReference("output");
+                            outputQueue.CreateIfNotExist();
+                            outputQueue.AddMessage(message);
+                            letterQueue.DeleteMessage(message);
+                        }
                     }
+                }
+
+                if (RepeatMode)
+                {
+                    CloudQueueMessage repeatMsg = new CloudQueueMessage("repeat");
+                    CloudQueue outputQueue = queueClient.GetQueueReference("output");
+                    outputQueue.AddMessage(repeatMsg);
                 }
                 
                 Thread.Sleep(2000);

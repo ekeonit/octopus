@@ -3,6 +3,7 @@
   <PropertyGroup>
     <PackageProfile>Cloud</PackageProfile>
     <PackageSolutionConfiguration>Debug</PackageSolutionConfiguration>
-    <PackageEnableRemoteDesktop>False</PackageEnableRemoteDesktop>
+    <PackageEnableRemoteDesktop>True</PackageEnableRemoteDesktop>
+    <ActivePublishProfile>octopusStaging</ActivePublishProfile>
   </PropertyGroup>
 </Project>

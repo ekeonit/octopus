@@ -31,14 +31,22 @@ namespace WorkerRole
 
                     if (message != null)
                     {
-                        Trace.WriteLine(String.Format("Found message.  Moving {0} to the output queue", message.AsString), "[Punctuation Queue]");
+                        if (message.AsString.Equals("?"))
+                        {
+                            punctuationQueue.DeleteMessage(message);
+                            Trace.WriteLine("Exception requested", "[Punctuation Queue]");
+                            throw new Exception("Exception requested");
+                        }
+                        else
+                        {
+                            Trace.WriteLine(String.Format("Found message.  Moving {0} to the output queue", message.AsString), "[Punctuation Queue]");
 
-                        // move the message to the output queue
-                        CloudQueue outputQueue = queueClient.GetQueueReference("output");
-                        outputQueue.CreateIfNotExist();
-                        outputQueue.AddMessage(message);
-
-                        punctuationQueue.DeleteMessage(message);
+                            // move the message to the output queue
+                            CloudQueue outputQueue = queueClient.GetQueueReference("output");
+                            outputQueue.CreateIfNotExist();
+                            outputQueue.AddMessage(message);
+                            punctuationQueue.DeleteMessage(message);
+                        }                        
                     }
                 }
 

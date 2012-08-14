@@ -40,7 +40,7 @@ namespace WorkerRole
                         continue;
                     }
 
-                    _threads[i] = new Thread(_workers[i].Run);
+                    _threads[i] = new Thread(_workers[i].RunInternal);
                     _threads[i].Start();
                 }
 

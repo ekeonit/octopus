@@ -22,27 +22,44 @@ namespace WorkerRole
 
             while (true)
             {
-                // Retrieve a reference to a queue
-                CloudQueue numberQueue = queueClient.GetQueueReference("numbers");
-
-                if (numberQueue.Exists())
+                try
                 {
-                    CloudQueueMessage message = numberQueue.GetMessage();
+                    // Retrieve a reference to a queue
+                    CloudQueue numberQueue = queueClient.GetQueueReference("numbers");
 
-                    if (message != null)
+                    if (numberQueue.Exists())
                     {
-                        Trace.WriteLine(String.Format("Found message.  Moving {0} to the output queue", message.AsString), "[Number Queue]");
+                        CloudQueueMessage message = numberQueue.GetMessage();
 
-                        // move the message to the output queue
-                        CloudQueue outputQueue = queueClient.GetQueueReference("output");
-                        outputQueue.CreateIfNotExist();
-                        outputQueue.AddMessage(message);
+                        if (message != null)
+                        {
+                            if (message.AsString.Equals("1"))
+                            {
+                                // throw an exception
+                                numberQueue.DeleteMessage(message);
+                                Trace.WriteLine("Exception requested", "[Number Queue]");
+                                throw new Exception("Exception requested");
+                            }
+                            else
+                            {
+                                Trace.WriteLine(String.Format("Found message.  Moving {0} to the output queue", message.AsString), "[Number Queue]");
 
-                        numberQueue.DeleteMessage(message);
+                                // move the message to the output queue
+                                CloudQueue outputQueue = queueClient.GetQueueReference("output");
+                                outputQueue.CreateIfNotExist();
+                                outputQueue.AddMessage(message);
+                                numberQueue.DeleteMessage(message);
+                            }
+                        }
                     }
+
+                    Thread.Sleep(2000);
                 }
-                
-                Thread.Sleep(2000);
+                catch(Exception)
+                {
+                    Trace.WriteLine("Caught unhandled exception in NumberQueueWorker", "[Number Queue]");
+                }
             }
         }
-    }}
+    }
+}

@@ -9,5 +9,12 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">DefaultEndpointsProtocol=https;AccountName=octopus;AccountKey=g2uCOZTNOWxvJMhrZPlVzBfaXgoGLyQVSxcpF+1FRtABhrO1yqF9EHtYcPYVhQsXRk8pRJI23UfXLi563+bH3A==</Value>
     </Setting>
+    <Setting Name="LocalConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;UseDevelopmentStorage=true&lt;/ConnectionString&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">UseDevelopmentStorage=true</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
