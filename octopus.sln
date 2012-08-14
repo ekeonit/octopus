@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "octopus", "octopus\octopus.ccproj", "{946FC1B6-72D5-45A7-A51B-04BE6F3BF218}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "octopus.feeder", "octopus.feeder\octopus.feeder.csproj", "{789AE4BF-CA2A-4AA7-B06A-646D48DCFC4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "octopus.eater", "octopus.eater\octopus.eater.csproj", "{C272E1E3-5837-4A75-A01C-93B3B3AE9C51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "octopus.worker", "octopus.worker\octopus.worker.csproj", "{7ED4749F-A122-4586-963E-0F31CAF4F36A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{789AE4BF-CA2A-4AA7-B06A-646D48DCFC4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{789AE4BF-CA2A-4AA7-B06A-646D48DCFC4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{789AE4BF-CA2A-4AA7-B06A-646D48DCFC4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{789AE4BF-CA2A-4AA7-B06A-646D48DCFC4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ED4749F-A122-4586-963E-0F31CAF4F36A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ED4749F-A122-4586-963E-0F31CAF4F36A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ED4749F-A122-4586-963E-0F31CAF4F36A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ED4749F-A122-4586-963E-0F31CAF4F36A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{946FC1B6-72D5-45A7-A51B-04BE6F3BF218}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{946FC1B6-72D5-45A7-A51B-04BE6F3BF218}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{946FC1B6-72D5-45A7-A51B-04BE6F3BF218}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{946FC1B6-72D5-45A7-A51B-04BE6F3BF218}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C272E1E3-5837-4A75-A01C-93B3B3AE9C51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C272E1E3-5837-4A75-A01C-93B3B3AE9C51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C272E1E3-5837-4A75-A01C-93B3B3AE9C51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C272E1E3-5837-4A75-A01C-93B3B3AE9C51}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
